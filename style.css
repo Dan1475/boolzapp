@@ -137,7 +137,6 @@ img{
 }
 .writing-wrapper{
   height: 100%;
-
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -152,15 +151,16 @@ img{
 
 .message.received{
   background: white;
-
-
 }
 
 .message.sent{
   background: #E0F8BD;
-  float: right;
-  
+  margin: 15px 0 15px 0;
+  position: relative;
+    right: -60%;
 }
+
+
 .message{
   width: 40%;
   height: auto;
