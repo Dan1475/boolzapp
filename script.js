@@ -12,7 +12,7 @@ function testAddMessage(){
 
   $(message).addClass('message sent');
   $(messageContent).text(mex);
-  $(messageDetail).text('17:10');
+  $(messageDetail).text(getTime());
   $(check).addClass('fas fa-check-double check');
 
   message.append(messageContent);
@@ -47,9 +47,10 @@ function answerMessage(){
   var messageDetail = document.createElement('small');
   var check = document.createElement('i');
 
+
   $(message).addClass('message received');
   $(messageContent).text("ok, va bene!");
-  $(messageDetail).text('17:10');
+  $(messageDetail).text(getTime());
   $(check).addClass('fas fa-check-double check');
   message.append(messageContent);
   message.append(messageDetail);
@@ -114,6 +115,16 @@ function createDeleteMex(){
     deleteMex();
 
   })
+}
+
+
+function getTime(){
+  var date = new Date();
+  var hour = date.getHours();
+  var minutes = date.getMinutes();
+  var time = hour + ":" + minutes;
+
+  return time;
 }
 
 function deleteMex(){
