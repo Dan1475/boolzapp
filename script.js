@@ -1,26 +1,21 @@
 function testAddMessage(){
 
-  var chat = $('.selected-chat');
-  var input = $('#text-message');
-  var mex = input.val();
-  var message = document.createElement('div');
-  var messageContent = document.createElement('p');
-  var messageDetail = document.createElement('small');
-  var check = document.createElement('i');
+ var mex = $('#text-message').val();
+  var data = {
+    messaggio: mex,
+    orario: getTime(),
+    class: 'message sent'
+  };
+
+  var template = $('#box-template').html();
+  var compiled = Handlebars.compile(template);
+  var finalHTML = compiled(data);
+
+   var chat = $('.chat-container.show> .selected-chat');
+  chat.append(finalHTML);
+  chat.animate({scrollTop: chat.prop("scrollHeight")});
 
 
-
-  $(message).addClass('message sent');
-  $(messageContent).text(mex);
-  $(messageDetail).text(getTime());
-  $(check).addClass('fas fa-check-double check');
-
-  message.append(messageContent);
-  message.append(messageDetail);
-  message.append(check);
-  chat.append(message);
-
-  viewCheck();
   createDeleteMex();
 }
 
@@ -36,63 +31,49 @@ function textEnterEvent(e){
     clearInput();
     setTimeout(answerMessage, 1000 );
   }
+
 }
 
 
 function answerMessage(){
 
-  var chat = $('.selected-chat');
-  var message = document.createElement('div');
-  var messageContent = document.createElement('p');
-  var messageDetail = document.createElement('small');
-  var check = document.createElement('i');
+
+   var data = {
+     messaggio: "Ok, ricevuto",
+     orario: getTime(),
+     class: 'message received'
+   };
+
+   var template = $('#box-template').html();
+   var compiled = Handlebars.compile(template);
+   var finalHTML = compiled(data);
+
+    var chat = $('.chat-container.show> .selected-chat');
+    chat.append(finalHTML);
+    chat.animate({scrollTop: chat.prop("scrollHeight")});
 
 
-  $(message).addClass('message received');
-  $(messageContent).text("ok, va bene!");
-  $(messageDetail).text(getTime());
-  $(check).addClass('fas fa-check-double check');
-  message.append(messageContent);
-  message.append(messageDetail);
-  message.append(check);
-  chat.append(message);
 
-  viewCheck();
   createDeleteMex();
 }
 
 
-function viewCheck(){
-  var message = $('.message');
-  var time = $('.message small');
-  var check = $('.check');
-  message.mouseenter(function(){
-    time.hide();
-    check.show();
-
-  });
-  message.mouseleave(function(){
-    time.show();
-    check.hide();
-
-  })
-}
 
 
 function searchInput(){
 
-
  var search = $('#search-input');
- var key = search.val();
+ var key = search.val().toLowerCase();
+
  var names = $('.chat-message p');
  var chat = $('.chat');
  chat.removeClass('hidden');
  for (var i = 0; i < names.length; i++) {
-  var name = chat.eq(i);
-  var nameCont = name.text();
- var chatFinded = chat.eq(i);
-  if (!nameCont.includes(key)) {
-    chatFinded.addClass('hidden');
+  var chatInd = chat.eq(i);
+  var chatText = chatInd.find('p').text().toLowerCase();
+
+  if (!chatText.includes(key)) {
+    chatInd.addClass('hidden');
   }
  }
 }
@@ -137,14 +118,36 @@ function deleteMex(){
     mex.hide();
   })
 }
+
+
+
+
+function changeChat(){
+   var chat = $('.chat-container');
+   chat.removeClass('show');
+   var me = $(this);
+   var chatInd = me.index();
+
+
+   var selectedChat = chat.eq(chatInd);
+   selectedChat.removeClass('hidden').addClass('show');
+   chat.addClass('hidden');
+}
+
+
+
 function init(){
 
   var text = $('#text-message');
   text.keyup(textEnterEvent)
-  viewCheck();
+
 
   var input = $('#search-input');
   input.keyup(searchInput);
+
+  var chatCont = $('.chat');
+  chatCont.click(changeChat);
+
 
   createDeleteMex();
 }

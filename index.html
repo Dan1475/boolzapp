@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js" charset="utf-8"></script>
+    <script id="box-template" type="text/x-handlebars-template">
+      <div class="box {{ class }}">
+        <p>{{messaggio}}</p>
+        <small>{{orario}}</small>
+        <i class="fas fa-check-double check"></i>
+
+      </div>
+    </script>
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- ////template -->
     <meta charset="utf-8">
     <title></title>
   </head>
@@ -105,37 +115,213 @@
           </div>
         </div>
         <div class="right">
-         <div class="nav-right">
-           <img src="tizio.png" alt="">
-           <div class="dati-chat">
-             <p><b>Sakamoto</b></p>
-             <small>Ultimo accesso oggi alle 15:40</small>
+          <div class="chat-container hidden">
 
+           <div class="nav-right">
+             <img src="tizio.png" alt="">
+             <div class="selected-contact">
+               <p><b>Mario</b></p>
+               <small>Ultimo accesso oggi alle 15:40</small>
+
+             </div>
+             <div class="icon-wrapper">
+               <i class="far fa-user-circle"></i>
+               <i class="fas fa-comment-alt"></i>
+               <i class="fas fa-ellipsis-v"></i>
+             </div>
            </div>
-           <div class="icon-wrapper">
-             <i class="far fa-user-circle"></i>
-             <i class="fas fa-comment-alt"></i>
-             <i class="fas fa-ellipsis-v"></i>
-           </div>
-         </div>
-         <div class="selected-chat">
+           <div class="selected-chat">
 
-          <div class="message received">
-           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-           <small>17:04</small>
-           <i class="fas fa-check-double check"></i>
-          </div>
-
-
-
-            <div class="message sent">
-             <p>ciao ciao ciao</p>
+            <div class="message received">
+             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
              <small>17:04</small>
-             <i class="fas fa-check-double check"></i>
 
             </div>
 
+
+
+              <div class="message sent">
+               <p>ciao ciao ciao</p>
+               <small>17:04</small>
+
+
+              </div>
+             </div>
          </div>
+
+         <div class="chat-container hidden">
+
+          <div class="nav-right">
+            <img src="tizio.png" alt="">
+            <div class="selected-contact">
+              <p><b>Michele</b></p>
+              <small>Ultimo accesso oggi alle 15:40</small>
+
+            </div>
+            <div class="icon-wrapper">
+              <i class="far fa-user-circle"></i>
+              <i class="fas fa-comment-alt"></i>
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
+          </div>
+          <div class="selected-chat">
+
+           <div class="message received">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <small>17:04</small>
+            <i class="fas fa-check-double check"></i>
+           </div>
+
+
+
+             <div class="message sent">
+              <p>ciao ciao ciao</p>
+              <small>17:04</small>
+              <i class="fas fa-check-double check"></i>
+
+             </div>
+            </div>
+         </div>
+
+         <div class="chat-container hidden">
+
+          <div class="nav-right">
+            <img src="tizio.png" alt="">
+            <div class="selected-contact">
+              <p><b>Giovanna</b></p>
+              <small>Ultimo accesso oggi alle 15:40</small>
+
+            </div>
+            <div class="icon-wrapper">
+              <i class="far fa-user-circle"></i>
+              <i class="fas fa-comment-alt"></i>
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
+          </div>
+          <div class="selected-chat">
+
+           <div class="message received">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <small>17:04</small>
+            <i class="fas fa-check-double check"></i>
+           </div>
+
+
+
+             <div class="message sent">
+              <p>ciao ciao ciao</p>
+              <small>17:04</small>
+              <i class="fas fa-check-double check"></i>
+
+             </div>
+            </div>
+         </div>
+
+         <div class="chat-container hidden">
+
+          <div class="nav-right">
+            <img src="tizio.png" alt="">
+            <div class="selected-contact">
+              <p><b>Arianna</b></p>
+              <small>Ultimo accesso oggi alle 15:40</small>
+
+            </div>
+            <div class="icon-wrapper">
+              <i class="far fa-user-circle"></i>
+              <i class="fas fa-comment-alt"></i>
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
+          </div>
+          <div class="selected-chat">
+
+           <div class="message received">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <small>17:04</small>
+            <i class="fas fa-check-double check"></i>
+           </div>
+
+
+
+             <div class="message sent">
+              <p>ciao ciao ciao</p>
+              <small>17:04</small>
+              <i class="fas fa-check-double check"></i>
+
+             </div>
+            </div>
+         </div>
+
+         <div class="chat-container hidden">
+
+          <div class="nav-right">
+            <img src="tizio.png" alt="">
+            <div class="selected-contact">
+              <p><b>Mimmo</b></p>
+              <small>Ultimo accesso oggi alle 15:40</small>
+
+            </div>
+            <div class="icon-wrapper">
+              <i class="far fa-user-circle"></i>
+              <i class="fas fa-comment-alt"></i>
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
+          </div>
+          <div class="selected-chat">
+
+           <div class="message received">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <small>17:04</small>
+            <i class="fas fa-check-double check"></i>
+           </div>
+
+
+
+             <div class="message sent">
+              <p>ciao ciao ciao</p>
+              <small>17:04</small>
+              <i class="fas fa-check-double check"></i>
+
+             </div>
+            </div>
+         </div>
+
+         <div class="chat-container hidden">
+
+          <div class="nav-right">
+            <img src="tizio.png" alt="">
+            <div class="selected-contact">
+              <p><b>Gigi</b></p>
+              <small>Ultimo accesso oggi alle 15:40</small>
+
+            </div>
+            <div class="icon-wrapper">
+              <i class="far fa-user-circle"></i>
+              <i class="fas fa-comment-alt"></i>
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
+          </div>
+          <div class="selected-chat">
+
+           <div class="message received">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <small>17:04</small>
+            <i class="fas fa-check-double check"></i>
+           </div>
+
+
+
+             <div class="message sent">
+              <p>ciao ciao ciao</p>
+              <small>17:04</small>
+              <i class="fas fa-check-double check"></i>
+
+             </div>
+            </div>
+         </div>
+
+
+
+
          <div class="right-down">
            <div class="writing-wrapper">
 
